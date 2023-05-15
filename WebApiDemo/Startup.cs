@@ -46,6 +46,7 @@ namespace WebApiDemo
             });
             services.AddMediatRServices();
             services.AddMySqlDomainContext(Configuration.GetValue<string>("Mysql"));
+            //services.AddSqlServerDomainContext(Configuration.GetValue<string>("SqlServer"));
             services.AddRepositories();
 
         }

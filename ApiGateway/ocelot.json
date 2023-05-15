@@ -9,17 +9,16 @@
           "Port": 5000
         }
       ],
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Cookies",
-      //  "AllowedScopes": []
-      //},
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",//Cookies
+        "AllowedScopes": []
+      },
       //"RouteClaimsRequirement": {
       //  "UserType": "Admin"
       //},
       "UpstreamPathTemplate": "/openapi/api/{everything}",
       "UpstreamHttpMethod": []
     }
-
   ],
   "GlobalConfiguration": {
     "RequestIdKey": "OcRequestId",

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApiDemo.Application.Commands;
 using WebApiDemo.Application.Queries;
+using WebApiDemo.Controllers.Base;
+using WebApiDemo.Core.Response;
 using WebApiDemo.Domain.OrderAggregate;
 
 namespace WebApiDemo.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
-    public class OrderController : ControllerBase
+    public class OrderController : BaseApiController
     {
         IMediator _mediator;
 
@@ -21,15 +21,17 @@ namespace WebApiDemo.Controllers
         }
 
         [HttpPost]
-        public async Task<long> CreateOrder([FromBody] CreateOrderCommand cmd)
+        public async Task<JsonResponse<long>> CreateOrder([FromBody] CreateOrderCommand cmd)
         {
-            return await _mediator.Send(cmd, HttpContext.RequestAborted);
+            var result = await _mediator.Send(cmd, HttpContext.RequestAborted);
+            return ResponseHelp.Success(result);
         }
 
         [HttpGet]
-        public async Task<List<Order>> QueryOrder([FromQuery] MyOrderQuery request)
+        public async Task<JsonResponse<List<Order>>> QueryOrder([FromQuery] MyOrderQuery request)
         {
-            return await _mediator.Send(request);
+            var result = await _mediator.Send(request);
+            return ResponseHelp.Success(result);
         }
     }
 }

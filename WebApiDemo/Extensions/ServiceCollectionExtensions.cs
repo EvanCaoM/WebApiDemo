@@ -37,6 +37,14 @@ namespace WebApiDemo.Extensions
             });
         }
 
+        public static IServiceCollection AddSqlServerDomainContext(this IServiceCollection services, string connectionString)
+        {
+            return services.AddDomainContext(builder =>
+            {
+                builder.UseSqlServer(connectionString);
+            });
+        }
+
 
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
