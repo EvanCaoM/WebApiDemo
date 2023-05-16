@@ -28,7 +28,6 @@ namespace WebApiDemo
            .WriteTo.Console(new RenderedCompactJsonFormatter())
            //.WriteTo.Fluentd("localhost", 30011, tag: "geektime-ordering-api", restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug)
            .CreateLogger();
-            Configuration.GetSection("exceptionless").Bind(Exceptionless.ExceptionlessClient.Default.Configuration);
             try
             {
                 Log.Information("Starting web host");

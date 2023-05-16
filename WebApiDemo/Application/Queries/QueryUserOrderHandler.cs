@@ -22,7 +22,7 @@ namespace WebApiDemo.Application.Queries
 
         public async Task<List<UserOrder>> Handle(QueryUserOrder request, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(_orderRepository.QueryUserOrder(request.UserId));
+            return await _orderRepository.QueryUserOrder(request.UserId);
         }
     }
 }

@@ -10,6 +10,9 @@ namespace WebApiDemo.Infrastructure.Repositories
     {
         Task<List<Order>> GetByUserId(string userId);
 
-        List<UserOrder> QueryUserOrder(string userId);
+        Task<List<UserOrder>> QueryUserOrder(string userId);
+
+        Task<List<dynamic>> QueryDynamic(string userId);
+
     }
 }

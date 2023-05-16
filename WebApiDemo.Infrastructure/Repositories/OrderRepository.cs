@@ -22,10 +22,16 @@ namespace WebApiDemo.Infrastructure.Repositories
             return await DbContext.Orders.Include(x => x.User).Where(x => x.UserId.Equals(userId)).ToListAsync();
         }
 
-        public List<UserOrder> QueryUserOrder(string userId)
+        public async Task<List<UserOrder>> QueryUserOrder(string userId)
         {
-            var sql = "select userId,count(1) count from order where userId=@0 group by userId";
-            return this.Query<UserOrder>(sql, new List<object>() { userId}).ToList();
+            var sql = "select userId,count(1) count from `order` where userId=@userId group by userId";
+            return (await this.QueryAsync<UserOrder>(sql, new { userId})).ToList();
+        }
+
+        public async Task<List<dynamic>> QueryDynamic(string userId)
+        {
+            var sql = "select userId,count(1) count from `order` where userId=@userId group by userId";
+            return (await this.QueryAsync(sql, new { userId })).ToList();
         }
     }
 }

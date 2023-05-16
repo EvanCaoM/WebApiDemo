@@ -90,24 +90,35 @@ namespace WebApiDemo.Core.Infrastructure
             return await DbContext.FindAsync<TEntity>(id, cancellationToken);
         }
 
-        public virtual IEnumerable<T> Query<T>(string sql)
+        public virtual IEnumerable<dynamic> Query(string sql,object param = null)
         {
-            return DbContext.Database.GetDbConnection().Query<T>(sql);
+            return DbContext.Database.GetDbConnection().Query(sql,param);
         }
 
-        public virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql)
+        public virtual async Task<IEnumerable<dynamic>> QueryAsync(string sql, object param = null)
         {
-            return await DbContext.Database.GetDbConnection().QueryAsync<T>(sql);
+            return await DbContext.Database.GetDbConnection().QueryAsync(sql,param);
         }
 
-        public virtual IEnumerable<T> Query<T>(string sql, List<object> param)
+
+        public virtual IEnumerable<T> Query<T>(string sql, object param = null)
         {
-            return DbContext.Database.GetDbConnection().Query<T>(sql, param.ToArray());
+            return DbContext.Database.GetDbConnection().Query<T>(sql, param);
         }
 
-        public virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql, List<object> param)
+        public virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
         {
-            return await DbContext.Database.GetDbConnection().QueryAsync<T>(sql, param.ToArray());
+            return await DbContext.Database.GetDbConnection().QueryAsync<T>(sql, param);
+        }
+
+        public virtual int Execute(string sql, object param = null)
+        {
+            return DbContext.Database.GetDbConnection().Execute(sql, param);
+        }
+
+        public virtual async Task<int> ExecuteAsync<T>(string sql, object param = null)
+        {
+            return await DbContext.Database.GetDbConnection().ExecuteAsync(sql, param);
         }
     }
 

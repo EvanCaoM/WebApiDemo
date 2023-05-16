@@ -26,7 +26,8 @@ namespace WebApiDemo.Test.Base
             var services = new ServiceCollection();
             services.AddSingleton(Configuration);
             services.AddMediatRServices();
-            services.AddSqlServerDomainContext(Configuration.GetValue<string>("SqlServer"));
+            //services.AddSqlServerDomainContext(Configuration.GetValue<string>("SqlServer"));
+            services.AddMySqlDomainContext(Configuration.GetValue<string>("Mysql"));
             services.AddRepositories();
             Services = services.BuildServiceProvider();
         }
