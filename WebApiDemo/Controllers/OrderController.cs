@@ -7,6 +7,7 @@ using WebApiDemo.Application.Commands;
 using WebApiDemo.Application.Queries;
 using WebApiDemo.Controllers.Base;
 using WebApiDemo.Core.Response;
+using WebApiDemo.Domain.BLL;
 using WebApiDemo.Domain.OrderAggregate;
 
 namespace WebApiDemo.Controllers
@@ -30,6 +31,13 @@ namespace WebApiDemo.Controllers
         [HttpGet]
         public async Task<JsonResponse<List<Order>>> QueryOrder([FromQuery] MyOrderQuery request)
         {
+            var result = await _mediator.Send(request);
+            return ResponseHelp.Success(result);
+        }
+
+        [HttpGet]
+        public async Task<JsonResponse<List<UserOrder>>> QueryUserOrder([FromQuery] QueryUserOrder request)
+        { 
             var result = await _mediator.Send(request);
             return ResponseHelp.Success(result);
         }

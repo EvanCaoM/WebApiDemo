@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -86,6 +88,26 @@ namespace WebApiDemo.Core.Infrastructure
         public virtual async Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken = default)
         {
             return await DbContext.FindAsync<TEntity>(id, cancellationToken);
+        }
+
+        public virtual IEnumerable<T> Query<T>(string sql)
+        {
+            return DbContext.Database.GetDbConnection().Query<T>(sql);
+        }
+
+        public virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql)
+        {
+            return await DbContext.Database.GetDbConnection().QueryAsync<T>(sql);
+        }
+
+        public virtual IEnumerable<T> Query<T>(string sql, List<object> param)
+        {
+            return DbContext.Database.GetDbConnection().Query<T>(sql, param.ToArray());
+        }
+
+        public virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql, List<object> param)
+        {
+            return await DbContext.Database.GetDbConnection().QueryAsync<T>(sql, param.ToArray());
         }
     }
 

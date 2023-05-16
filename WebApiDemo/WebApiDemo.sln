@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiDemo.Core", "..\WebAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "..\ApiGateway\ApiGateway.csproj", "{38DF7791-970C-4CB1-8358-71D49D5A63EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDemo.Domain", "..\WebApiDemo.Domain\WebApiDemo.Domain.csproj", "{820BFAF4-CC92-449F-A1AF-BCD0421F3387}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiDemo.Domain", "..\WebApiDemo.Domain\WebApiDemo.Domain.csproj", "{820BFAF4-CC92-449F-A1AF-BCD0421F3387}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDemo.Infrastructure", "..\WebApiDemo.Infrastructure\WebApiDemo.Infrastructure.csproj", "{F41C7F06-2309-4D71-A8D9-ABBF8D369D2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiDemo.Infrastructure", "..\WebApiDemo.Infrastructure\WebApiDemo.Infrastructure.csproj", "{F41C7F06-2309-4D71-A8D9-ABBF8D369D2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDemo.Test", "..\WebApiDemo.Test\WebApiDemo.Test.csproj", "{67BF4051-1627-446E-8B5A-EDA8F45364DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F41C7F06-2309-4D71-A8D9-ABBF8D369D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41C7F06-2309-4D71-A8D9-ABBF8D369D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F41C7F06-2309-4D71-A8D9-ABBF8D369D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67BF4051-1627-446E-8B5A-EDA8F45364DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67BF4051-1627-446E-8B5A-EDA8F45364DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67BF4051-1627-446E-8B5A-EDA8F45364DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67BF4051-1627-446E-8B5A-EDA8F45364DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
