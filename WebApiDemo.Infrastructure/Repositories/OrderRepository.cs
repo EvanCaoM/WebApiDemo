@@ -33,5 +33,11 @@ namespace WebApiDemo.Infrastructure.Repositories
             var sql = "select userId,count(1) count from `order` where userId=@userId group by userId";
             return (await this.QueryAsync(sql, new { userId })).ToList();
         }
+
+        public async Task<List<dynamic>> QueryJoinDynamic(string userId)
+        {
+            var sql = "select userId,r.name from `order` o inner join role r on o.id=r.id where userId=@userId";
+            return (await this.QueryAsync(sql, new { userId })).ToList();
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace WebApiDemo.Infrastructure.Repositories
 
         Task<List<dynamic>> QueryDynamic(string userId);
 
+        Task<List<dynamic>> QueryJoinDynamic(string userId);
     }
 }

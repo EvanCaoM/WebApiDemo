@@ -46,5 +46,13 @@ namespace WebApiDemo.Test.Order
             };
             Assert.True(result.Count > 0);
         }
+
+        [Fact]
+        public async Task QueryJoinTest()
+        {
+            var result = await _orderRepository.QueryJoinDynamic("xiaohong1998");
+            var rs = result.FirstOrDefault();
+            Assert.True(result.Count > 0);
+        }
     }
 }

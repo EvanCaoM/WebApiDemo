@@ -49,6 +49,43 @@ namespace WebApiDemo.Core.Infrastructure
         {
             return Task.FromResult(Remove(entity));
         }
+
+
+        public virtual IEnumerable<dynamic> Query(string sql, object param = null, bool isStoredProcedure = false)
+        {
+            return DbContext.Database.GetDbConnection().Query(sql, param, commandType: GetCommandType(isStoredProcedure));
+        }
+
+        public virtual async Task<IEnumerable<dynamic>> QueryAsync(string sql, object param = null, bool isStoredProcedure = false)
+        {
+            return await DbContext.Database.GetDbConnection().QueryAsync(sql, param, commandType: GetCommandType(isStoredProcedure));
+        }
+
+
+        public virtual IEnumerable<T> Query<T>(string sql, object param = null, bool isStoredProcedure = false)
+        {
+            return DbContext.Database.GetDbConnection().Query<T>(sql, param, commandType: GetCommandType(isStoredProcedure));
+        }
+
+        public virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null, bool isStoredProcedure = false)
+        {
+            return await DbContext.Database.GetDbConnection().QueryAsync<T>(sql, param, commandType: GetCommandType(isStoredProcedure));
+        }
+
+        public virtual int Execute(string sql, object param = null, bool isStoredProcedure = false)
+        {
+            return DbContext.Database.GetDbConnection().Execute(sql, param, commandType: GetCommandType(isStoredProcedure));
+        }
+
+        public virtual async Task<int> ExecuteAsync<T>(string sql, object param = null, bool isStoredProcedure = false)
+        {
+            return await DbContext.Database.GetDbConnection().ExecuteAsync(sql, param, commandType: GetCommandType(isStoredProcedure));
+        }
+
+        private System.Data.CommandType GetCommandType(bool isStoredProcedure)
+        {
+            return isStoredProcedure ? System.Data.CommandType.StoredProcedure : System.Data.CommandType.Text;
+        }
     }
 
 
@@ -90,36 +127,6 @@ namespace WebApiDemo.Core.Infrastructure
             return await DbContext.FindAsync<TEntity>(id, cancellationToken);
         }
 
-        public virtual IEnumerable<dynamic> Query(string sql,object param = null)
-        {
-            return DbContext.Database.GetDbConnection().Query(sql,param);
-        }
-
-        public virtual async Task<IEnumerable<dynamic>> QueryAsync(string sql, object param = null)
-        {
-            return await DbContext.Database.GetDbConnection().QueryAsync(sql,param);
-        }
-
-
-        public virtual IEnumerable<T> Query<T>(string sql, object param = null)
-        {
-            return DbContext.Database.GetDbConnection().Query<T>(sql, param);
-        }
-
-        public virtual async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
-        {
-            return await DbContext.Database.GetDbConnection().QueryAsync<T>(sql, param);
-        }
-
-        public virtual int Execute(string sql, object param = null)
-        {
-            return DbContext.Database.GetDbConnection().Execute(sql, param);
-        }
-
-        public virtual async Task<int> ExecuteAsync<T>(string sql, object param = null)
-        {
-            return await DbContext.Database.GetDbConnection().ExecuteAsync(sql, param);
-        }
     }
 
 
